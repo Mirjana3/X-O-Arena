@@ -1,0 +1,185 @@
+/* Basic Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  body {
+	font-family: Arial, sans-serif;
+	background-color: pink;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	color: #333;
+  }
+/* Background X and O */
+.body-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Ispod svih elemenata */
+  background: linear-gradient(135deg, #f9f7f7, #e3f2fd); /* Blaga svetla pozadina */
+}
+
+.body-background .symbol {
+  position: absolute;
+  font-size: 15rem; /* Veliki simboli */
+  font-weight: bold;
+  opacity: 0.2; /* Skoro prozirni */
+  color: rgba(0, 0, 0, 0.3); /* Tamnije, ali još uvek diskretno */
+  transform: rotate(calc(360deg * var(--angle))); /* Nasumična rotacija */
+}
+
+  
+  /* Main Container */
+  .main {
+	text-align: center;
+	background-color: #fff;
+	border-radius: 8px;
+	padding: 30px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Players Section */
+  .players {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 20px;
+	padding: 10px;
+	width: 100%;
+	max-width: 600px;
+  }
+  
+  .player {
+	font-size: 1.2rem;
+	text-align: center;
+	padding: 15px;
+	width: 45%;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+  }
+  
+  .player__symbol {
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-top: 10px;
+	color: rgba(0, 0, 0, 0.1);
+  }
+  .player:nth-child(1) .player__symbol {
+	color: #e74c3c;
+	background-color: #fff;
+  }
+
+  .player:nth-child(2) .player__symbol {
+	color: #2ecc71;
+	background-color: #fff;
+  }
+
+  .player h2 {
+	font-size: 1.5rem;
+	font-weight: normal;
+	color: #333;
+	margin-bottom: 5px;
+  }
+  
+  /* Board Container */
+  .board-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+  }
+  
+  /* Tic-Tac-Toe Grid */
+  .board {
+	display: grid;
+	grid-template-columns: repeat(3, 100px);
+	grid-template-rows: repeat(3, 100px);
+	gap: 5px;
+  }
+  
+  .board__cell {
+	width: 100px;
+	height: 100px;
+	background-color: #e0e0e0;
+	border: 1px solid #ddd;
+	font-size: 2.5rem;
+	font-weight: bold;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: background-color 0.3s;
+  }
+  
+  .board__cell:hover {
+	background-color: #d0d0d0;
+  }
+  
+  /* Game Restart Button */
+  .game-restart-btn {
+	padding: 10px 20px;
+	font-size: 1rem;
+	background-color: #3498db;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 20px;
+	transition: background-color 0.3s;
+  }
+  
+  .game-restart-btn:hover {
+	background-color: #2980b9;
+  }
+  
+  /* Popup */
+  .popup {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 8px;
+	color: #fff;
+  }
+  
+  .popup.show {
+	display: block;
+  }
+  
+  .popup__restart-btn {
+	padding: 10px 20px;
+	font-size: 1rem;
+	background-color: #27ae60;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 10px;
+  }
+  
+  .popup__restart-btn:hover {
+	background-color: #2ecc71;
+  }
+  
+  /* Hide Popup by default */
+  .hide {
+	display: none;
+  }
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(calc(360deg * var(--angle)));
+  }
+  100% {
+    transform: translate(20px, -20px) rotate(calc(-360deg * var(--angle)));
+  }
+}
