@@ -116,6 +116,7 @@ section {
   background: url('Tic-Tac-Toe.png') center/cover;
   height: 100vh;
   border-radius: 10px;
+  width: 100%;
 }
 
 /* Contact */
