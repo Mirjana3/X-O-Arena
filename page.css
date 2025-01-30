@@ -113,7 +113,7 @@ section {
 
 .about-image {
   flex: 1;
-  background: url('https://raw.githubusercontent.com/myuser/mywebsite/main/Tic-Tac-Toe.png') center/cover;
+  background: url('Tic-Tac-Toe.png') center/cover;
   height: 100vh;
   border-radius: 10px;
 }
