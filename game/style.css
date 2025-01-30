@@ -3,59 +3,60 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: Arial, sans-serif;
   }
   
-  body {
-	font-family: Arial, sans-serif;
-	background-color: pink;
+body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 	color: #333;
-  }
+}
 /* Background X and O */
 .body-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1; /* Ispod svih elemenata */
-  background: linear-gradient(135deg, #f9f7f7, #e3f2fd); /* Blaga svetla pozadina */
+  	position: absolute;
+	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+  	overflow: hidden;
+  	z-index: -1; 
+	  background: linear-gradient(135deg, #f9f7f7, #e3f2fd);
 }
 
 .body-background .symbol {
-  position: absolute;
-  font-size: 15rem; /* Veliki simboli */
-  font-weight: bold;
-  opacity: 0.2; /* Skoro prozirni */
-  color: rgba(0, 0, 0, 0.3); /* Tamnije, ali još uvek diskretno */
-  transform: rotate(calc(360deg * var(--angle))); /* Nasumična rotacija */
+  	position: absolute;
+  	font-size: 15rem; 
+  	font-weight: bold;
+ 	opacity: 0.15; 
+  	color: rgba(0, 0, 0, 0.3); 
+  	transform: rotate(calc(360deg * var(--angle))); 
 }
 
   
-  /* Main Container */
-  .main {
+/* Main Container */
+.main {
 	text-align: center;
-	background-color: #fff;
-	border-radius: 8px;
-	padding: 30px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 20px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	width: 90%;
+	max-width: 500px;
   }
   
-  /* Players Section */
-  .players {
+/* Players Section */
+.players {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	margin-bottom: 20px;
 	padding: 10px;
 	width: 100%;
 	max-width: 600px;
-  }
+}
   
-  .player {
+.player {
 	font-size: 1.2rem;
 	text-align: center;
 	padding: 15px;
@@ -63,123 +64,119 @@
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	background-color: #fff;
-  }
-  
-  .player__symbol {
-	font-size: 2.5rem;
-	font-weight: bold;
-	margin-top: 10px;
-	color: rgba(0, 0, 0, 0.1);
-  }
-  .player:nth-child(1) .player__symbol {
-	color: #e74c3c;
-	background-color: #fff;
-  }
+}
 
-  .player:nth-child(2) .player__symbol {
-	color: #2ecc71;
-	background-color: #fff;
-  }
-
-  .player h2 {
+.player h2 {
 	font-size: 1.5rem;
 	font-weight: normal;
 	color: #333;
 	margin-bottom: 5px;
-  }
+}
   
-  /* Board Container */
-  .board-container {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 20px;
-  }
-  
-  /* Tic-Tac-Toe Grid */
-  .board {
+.player__symbol {
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-top: 10px;
+	color: rgba(0, 0, 0, 0.1);
+}
+
+.player:nth-child(1) .player__symbol {
+	color: red;
+	background-color: #fff;
+}
+
+.player:nth-child(2) .player__symbol {
+	color: green;
+	background-color: #fff;
+}
+
+/*Grid */
+.board {
 	display: grid;
-	grid-template-columns: repeat(3, 100px);
-	grid-template-rows: repeat(3, 100px);
+	grid-template-columns: repeat(3, 1fr);
 	gap: 5px;
-  }
-  
-  .board__cell {
-	width: 100px;
-	height: 100px;
+	margin: auto;
+	width: 100%;
+	max-width: 300px;
+	justify-content: center;
+}
+
+/*Cell*/  
+.board__cell {
+	width: 115px;
+	height: 115px;
 	background-color: #e0e0e0;
-	border: 1px solid #ddd;
+	border: none;
 	font-size: 2.5rem;
 	font-weight: bold;
 	cursor: pointer;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transition: background-color 0.3s;
-  }
+	transition: background-color 0.3s, transform 0.1s;
+	border-radius: 5%;
+}
   
-  .board__cell:hover {
+.board__cell:hover {
 	background-color: #d0d0d0;
-  }
+	transform: scale(1.1);
+}
   
-  /* Game Restart Button */
-  .game-restart-btn {
+/*Restart button */
+.game-restart-btn {
 	padding: 10px 20px;
 	font-size: 1rem;
 	background-color: #3498db;
-	color: #fff;
+	color: white;
 	border: none;
-	border-radius: 4px;
+	border-radius: 5%;
 	cursor: pointer;
 	margin-top: 20px;
-	transition: background-color 0.3s;
-  }
+	transition: 0.3s;
+}
   
-  .game-restart-btn:hover {
+.game-restart-btn:hover {
 	background-color: #2980b9;
-  }
+}
   
-  /* Popup */
-  .popup {
+/* Popup */
+.popup {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	padding: 20px;
 	background-color: rgba(0, 0, 0, 0.7);
-	border-radius: 8px;
-	color: #fff;
-  }
+	border-radius: 10px;
+	color: white;
+	text-align: center;
+}
   
-  .popup.show {
+.popup.show {
 	display: block;
-  }
+}
   
-  .popup__restart-btn {
+.popup__restart-btn {
+	margin-top: 10px;
 	padding: 10px 20px;
 	font-size: 1rem;
 	background-color: #27ae60;
-	color: #fff;
+	color: white;
 	border: none;
-	border-radius: 4px;
+	border-radius: 5px;
 	cursor: pointer;
-	margin-top: 10px;
-  }
+}
   
-  .popup__restart-btn:hover {
+.popup__restart-btn:hover {
 	background-color: #2ecc71;
-  }
+}
   
-  /* Hide Popup by default */
-  .hide {
-	display: none;
-  }
-
-@keyframes float {
-  0% {
-    transform: translate(0, 0) rotate(calc(360deg * var(--angle)));
-  }
-  100% {
-    transform: translate(20px, -20px) rotate(calc(-360deg * var(--angle)));
-  }
+/* Responzivnost */
+@media (max-width: 400px) {
+	.board__cell {
+		width: 80px;
+		height: 80px;
+		font-size: 2rem;
+	}
 }
